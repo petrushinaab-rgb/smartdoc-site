@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartDoc</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F5F7FA;
+      color: #194371;
+    }
+
+    header {
+      background: #6384C1;
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    .auth button {
+      margin-left: 10px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login { background: white; color: #6384C1; }
+    .signup { background: #A0D467; color: black; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero img {
+      width: 140px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 { font-size: 48px; margin-bottom: 20px; }
+
+    .hero p { max-width: 600px; margin: auto; font-size: 18px; }
+
+    .btn-main {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background: #A0D467;
+      cursor: pointer;
+    }
+
+    .steps {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .steps h2 { margin-bottom: 40px; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 20px;
+    }
+
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .pricing {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .plan {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .plan button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #A0D467;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <!-- ВАЖНО: положи файл logo.png рядом с index.html -->
+    <img src="logo.png" alt="SmartDoc Logo">
+    SmartDoc
+  </div>
+
+  <div class="auth">
+    <button class="login" onclick="alert('Сделаем позже через backend')">Войти</button>
+    <button class="signup" onclick="alert('Регистрация будет подключена позже')">Регистрация</button>
+  </div>
+</header>
+
+<section class="hero">
+  <!-- Логотип по центру -->
+  <img src="logo.png" alt="SmartDoc">
+
+  <h1>Документы за 30 секунд</h1>
+  <p>Загрузи шаблон → заполни данные → получи готовый файл. Без рутины.</p>
+  <button class="btn-main" onclick="window.location.href='https://t.me/'">Открыть в Telegram</button>
+</section>
+
+<section class="steps">
+  <h2>Как это работает</h2>
+  <div class="steps-grid">
+    <div class="step">
+      <h3>1. Загрузи шаблон</h3>
+      <p>Добавь договор или документ</p>
+    </div>
+    <div class="step">
+      <h3>2. Заполни данные</h3>
+      <p>Введите имя, дату и другие поля</p>
+    </div>
+    <div class="step">
+      <h3>3. Получи файл</h3>
+      <p>Система соберёт готовый документ</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <h2>Тарифы</h2>
+  <div class="plans">
+
+    <div class="plan">
+      <h3>Бесплатно</h3>
+      <p>Ограниченные шаблоны</p>
+      <button onclick="alert('Подключим оплату позже')">Выбрать</button>
+    </div>
+
+    <div class="plan">
+      <h3>Pro</h3>
+      <p>Все шаблоны + команда</p>
+      <button onclick="alert('Подключим Stripe / оплату')">Купить</button>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 SmartDoc
+</footer>
+
+</body>
+</html>
