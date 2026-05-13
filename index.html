@@ -371,49 +371,62 @@
 
   // ВСТАВЬ СВОИ ДАННЫЕ FIREBASE
   // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// Импорты
+import { initializeApp } from "https://www.gstatic.com/firebase/9.22.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebase/9.22.0/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebase/9.22.0/firebase-auth.js";
 
 const firebaseConfig = {
-apiKey: "AIzaSyD03a0iEhaKxcOpIQ7hIU1cgawpPKtk8cT",
-authDomain: "smartdoc-76755.firebaseapp.com",
-projectId: "smartdoc-76755",
-storageBucket: "smartdoc-76755.firebasestorage.app",
+apiKey: "AIzaSyD03a0iEhaKxcOpIQ7hIUlcgawpPKtk8cT",
+authDomain: "smartdoc-76765.firebaseapp.com",
+projectId: "smartdoc-76765",
+storageBucket: "smartdoc-76765.firebase.storage.app",
 messagingSenderId: "435891400565",
-appId: "1:435891400565:web:10ea4087d5821d3dffed3c",
-measurementId: "G-JZH2LDHJTG"
+appId: "1:435891400565:web:10ea4087d5821d3dfed3c",
+measurementId: "G-JZH2LDHJTQ"
 };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
+// Регистрация
 window.registerUser = async function () {
 const email = document.getElementById("register-email").value;
 const password = document.getElementById("register-password").value;
+
+if (!email || !password) {
+alert("Заполните email и пароль");
+return;
+}
 
 try {
 await createUserWithEmailAndPassword(auth, email, password);
 alert("Аккаунт создан!");
 closeModal("registerModal");
 } catch (error) {
-alert(error.message);
+alert("Ошибка: " + error.message);
 }
 };
-  // Вход
-  window.loginUser = async function() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
 
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert('Вы вошли!');
-      closeModal('loginModal');
-    } catch (error) {
-      alert(error.message);
-    }
-  }
+// Вход
+window.loginUser = async function () {
+const email = document.getElementById("login-email").value;
+const password = document.getElementById("login-password").value;
+
+if (!email || !password) {
+alert("Заполните email и пароль");
+return;
+}
+
+try {
+await signInWithEmailAndPassword(auth, email, password);
+alert("Вы вошли!");
+closeModal("loginModal");
+} catch (error) {
+alert("Ошибка: " + error.message);
+}
+};
 </script>
 
 <!-- Stripe -->
