@@ -36,18 +36,13 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            cursor: pointer;
         }
 
-        .logo-icon {
+        .logo img {
             width: 40px;
             height: 40px;
-            background: #A0D467;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            color: white;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -507,8 +502,8 @@
 <body>
 
 <header>
-    <div class="logo">
-        <div class="logo-icon">📄</div>
+    <div class="logo" onclick="location.reload()">
+        <img src="logo.png" alt="SmartDoc Logo" onerror="this.src='https://placehold.co/40x40/A0D467/white?text=SD'">
         <div class="logo-text">Smart<span>Doc</span></div>
     </div>
     <div class="nav-buttons" id="navButtons">
@@ -659,30 +654,39 @@
 </div>
 
 <script>
-    // ВАШ НОВЫЙ API-КЛЮЧ (уже вставлен)
-    const firebaseConfig = {
-        apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM",
-        authDomain: "project-8fd7f.firebaseapp.com",
-        projectId: "project-8fd7f",
-        storageBucket: "project-8fd7f.firebasestorage.app",
-        messagingSenderId: "517469781021",
-        appId: "1:517469781021:web:62e7ce956d1a87010a9af4"
-    };
+    // ===== ВСТАВЬТЕ СЮДА ВАШ НОВЫЙ API-КЛЮЧ ОТ FIREBASE =====
+    const YOUR_NEW_API_KEY = "ВСТАВЬТЕ_НОВЫЙ_КЛЮЧ_СЮДА";
+    // ========================================================
     
-    // Загрузка Firebase
     const firebaseScript = document.createElement('script');
     firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js';
     firebaseScript.onload = () => {
         const authScript = document.createElement('script');
         authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
         authScript.onload = () => {
-            firebase.initializeApp(firebaseConfig);
+            const config = {
+                apiKey: YOUR_NEW_API_KEY,
+                authDomain: "project-8fd7f.firebaseapp.com",
+                projectId: "project-8fd7f",
+                storageBucket: "project-8fd7f.firebasestorage.app",
+                messagingSenderId: "517469781021",
+                appId: "1:517469781021:web:62e7ce956d1a87010a9af4"
+            };
+            
+            if (YOUR_NEW_API_KEY === "ВСТАВЬТЕ_НОВЫЙ_КЛЮЧ_СЮДА" || YOUR_NEW_API_KEY.length < 20) {
+                console.error("⚠️ Ошибка: API-ключ не настроен");
+                alert("Ошибка: API-ключ не настроен. Замените YOUR_NEW_API_KEY на реальный ключ из Google Cloud Console.");
+                return;
+            }
+            
+            firebase.initializeApp(config);
             window.auth = firebase.auth();
             
             window.auth.onAuthStateChanged((user) => {
                 const nav = document.getElementById('navButtons');
                 if (user) {
-                    nav.innerHTML = `<span style="color:#6384C1; margin-right:15px;">${user.email.split('@')[0]}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
+                    const userName = user.email ? user.email.split('@')[0] : 'Пользователь';
+                    nav.innerHTML = `<span style="color:#6384C1; margin-right:15px;">${userName}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
                 } else {
                     nav.innerHTML = `<button class="btn-login" onclick="openModal('loginModal')">Вход</button>
                                     <button class="btn-register" onclick="openModal('registerModal')">Регистрация</button>`;
