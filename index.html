@@ -1,463 +1,594 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartDoc — AI документы</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartDoc - Умные документы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      overflow-x: hidden;
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #F5F7FA;
-      color: #194371;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-      background: #6384C1;
-      padding: 12px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
+        header {
+            background: rgba(255,255,255,0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 20px;
-      font-weight: bold;
-    }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .logo img {
-      height: 40px;
-      border-radius: 8px;
-    }
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-    .auth button {
-      margin-left: 10px;
-      padding: 8px 14px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .nav-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
 
-    .login { background: white; color: #6384C1; }
-    .signup { background: #A0D467; color: black; }
+        .btn-login { background: #667eea; color: white; }
+        .btn-register { background: #764ba2; color: white; }
+        .btn-logout { background: #dc3545; color: white; }
 
-    .hero {
-      background: linear-gradient(135deg,#eef3fb,#ffffff);
-      position: relative;
-      text-align: center;
-      padding: 100px 20px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-    .hero img {
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
-      width: 140px;
-      margin-bottom: 20px;
-    }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            color: white;
+        }
 
-    .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
 
-    .hero p { max-width: 600px; margin: auto; font-size: 18px; }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
 
-    .btn-main {
-      transition: 0.3s;
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 10px;
-      border: none;
-      background: #A0D467;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .hero .city {
+            font-size: 18px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .steps {
-      padding: 60px 20px;
-      text-align: center;
-    }
+        .team-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
 
-    .steps h2 { margin-bottom: 40px; }
+        .team-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #667eea;
+        }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 20px;
-    }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
 
-    .step {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
+        .team-card {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
 
-    .pricing {
-      padding: 60px 20px;
-      text-align: center;
-    }
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-      gap: 20px;
-    }
+        .team-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+        }
 
-    .plan {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
+        .team-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
 
-    .plan button {
-      margin-top: 15px;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      background: #A0D467;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .team-card p {
+            color: #666;
+            line-height: 1.5;
+        }
 
-    .btn-main:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-    }
+        .pricing {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+        }
 
-    .feature-card:hover,
-    .step:hover,
-    .plan:hover {
-      transform: translateY(-5px);
-    }
+        .pricing h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #667eea;
+        }
 
-    .about {
-      padding: 80px 20px;
-      background: white;
-      text-align: center;
-    }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
 
-    .about p {
-      max-width: 750px;
-      margin: auto;
-      font-size: 18px;
-      line-height: 1.7;
-    }
+        .plan {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-    .team {
-      padding: 80px 20px;
-      text-align: center;
-    }
+        .plan:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
+        .plan.popular {
+            border: 2px solid #764ba2;
+            position: relative;
+        }
 
-    .member {
-      background: white;
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #764ba2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
 
-    .member img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
+        .plan h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
 
-    .contacts {
-      padding: 80px 20px;
-      background: #194371;
-      color: white;
-      text-align: center;
-    }
+        .price {
+            font-size: 48px;
+            color: #667eea;
+            font-weight: bold;
+            margin: 20px 0;
+        }
 
-    .contacts a {
-      color: #A0D467;
-      text-decoration: none;
-    }
+        .price span {
+            font-size: 18px;
+            color: #999;
+        }
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
+        .features {
+            list-style: none;
+            margin: 20px 0;
+        }
 
-    .modal-content {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      width: 320px;
-    }
+        .features li {
+            padding: 8px 0;
+            color: #666;
+        }
 
-    .modal-content input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
+        .btn-plan {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
 
-    .modal-content button {
-      width: 100%;
-      margin-top: 15px;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #6384C1;
-      color: white;
-    }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
-    footer {
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-    }
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
 
-  </style>
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .telegram-section {
+            background: linear-gradient(135deg, #0088cc, #003366);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .telegram-btn {
+            background: white;
+            color: #0088cc;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .telegram-btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .phone {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .team-section, .pricing {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">
-    <!-- ВАЖНО: положи файл logo.png рядом с index.html -->
-    <img src="logo.png" alt="SmartDoc Logo">
-    SmartDoc
-  </div>
-
-  <div class="auth">
-    <button class="login" onclick="openModal('loginModal')">Войти</button>
-    <button class="signup" onclick="openModal('registerModal')">Регистрация</button>
-  </div>
+    <div class="logo">SmartDoc</div>
+    <div class="nav-buttons" id="navButtons">
+        <button class="btn-login" onclick="openModal('loginModal')">Вход</button>
+        <button class="btn-register" onclick="openModal('registerModal')">Регистрация</button>
+    </div>
 </header>
 
-<section class="hero">
-  <!-- Логотип по центру -->
-  <img src="logo.png" alt="SmartDoc">
-
-  <h1>Документы за 30 секунд</h1>
-  <p>Загрузи шаблон → заполни данные → получи готовый файл. Без рутины.</p>
-  <button class="btn-main" onclick="window.location.href='https://t.me/'">Открыть в Telegram</button>
-</section>
-
-<section class="about">
-  <h2>Что такое SmartDoc?</h2>
-  <p>
-    SmartDoc — это AI-помощник для быстрого создания документов.
-    Сервис автоматически собирает договоры, письма и коммерческие предложения
-    по шаблонам, экономя время командам, фрилансерам и бизнесу.
-  </p>
-</section>
-
-<section class="steps">
-  <h2>Как это работает</h2>
-  <div class="steps-grid">
-    <div class="step">
-      <h3>1. Загрузи шаблон</h3>
-      <p>Добавь договор или документ</p>
-    </div>
-    <div class="step">
-      <h3>2. Заполни данные</h3>
-      <p>Введите имя, дату и другие поля</p>
-    </div>
-    <div class="step">
-      <h3>3. Получи файл</h3>
-      <p>Система соберёт готовый документ</p>
-    </div>
-  </div>
-</section>
-
-<section class="pricing">
-  <h2>Тарифы</h2>
-  <div class="plans">
-
-    <div class="plan">
-      <h3>Бесплатно</h3>
-      <p>Ограниченные шаблоны</p>
-      <button onclick="alert('Подключим оплату позже')">Выбрать</button>
+<div class="container">
+    <div class="hero">
+        <h1>Документы за 30 секунд</h1>
+        <p>Создавайте, подписывайте и управляйте документами онлайн</p>
+        <div class="city">
+            📍 Москва | ⭐ 4.9 на основе 500+ отзывов
+        </div>
     </div>
 
-    <div class="plan">
-      <h3>Pro</h3>
-      <p>Все шаблоны + команда</p>
-      <button onclick="buyPro()">Купить</button>
+    <!-- Команда -->
+    <div class="team-section">
+        <h2>Наша команда</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-icon">👩‍💻</div>
+                <h3>Настя</h3>
+                <p>Разработчик сайта и дизайнер</p>
+                <p>✨ Создала уникальный дизайн и архитектуру сайта</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon">📊</div>
+                <h3>Варя</h3>
+                <p>Аналитик и разработчик</p>
+                <p>📈 Оптимизировала процессы и улучшила UX</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon">💻</div>
+                <h3>Даня</h3>
+                <p>Разработчик</p>
+                <p>⚡ Реализовал бэкенд и интеграции</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon">🔥</div>
+                <h3>Насиб</h3>
+                <p>Tech Lead</p>
+                <p>🚀 Координирует разработку и внедряет инновации</p>
+            </div>
+            <div class="team-card">
+                <div class="team-icon">🎯</div>
+                <h3>Адэль</h3>
+                <p>Product Manager</p>
+                <p>💡 Отвечает за стратегию развития продукта</p>
+            </div>
+        </div>
     </div>
 
-  </div>
-</section>
-
-<section class="team">
-  <h2>Наша команда</h2>
-
-  <div class="team-grid">
-    <div class="member">
-      <img src="https://i.pravatar.cc/150?img=5">
-      <h3>Anastasia</h3>
-      <p>Founder & Product</p>
+    <!-- Подписки -->
+    <div class="pricing">
+        <h2>Выберите тариф</h2>
+        <div class="pricing-grid">
+            <div class="plan">
+                <h3>Базовый</h3>
+                <div class="price">0 ₽<span>/мес</span></div>
+                <ul class="features">
+                    <li>📄 5 документов в месяц</li>
+                    <li>📱 Базовая поддержка</li>
+                    <li>🔒 Шифрование данных</li>
+                </ul>
+                <button class="btn-plan" onclick="buyPlan('basic')">Бесплатно</button>
+            </div>
+            <div class="plan popular">
+                <div class="popular-badge">Популярный</div>
+                <h3>Про</h3>
+                <div class="price">499 ₽<span>/мес</span></div>
+                <ul class="features">
+                    <li>📄 Безлимит документов</li>
+                    <li>🎨 Приоритетная поддержка 24/7</li>
+                    <li>🤝 Совместная работа</li>
+                    <li>📊 Аналитика</li>
+                </ul>
+                <button class="btn-plan" onclick="buyPlan('pro')">Купить</button>
+            </div>
+            <div class="plan">
+                <h3>Бизнес</h3>
+                <div class="price">999 ₽<span>/мес</span></div>
+                <ul class="features">
+                    <li>🏢 Все из Про +</li>
+                    <li>🔐 White-label</li>
+                    <li>📞 API доступ</li>
+                    <li>👥 До 50 пользователей</li>
+                </ul>
+                <button class="btn-plan" onclick="buyPlan('business')">Купить</button>
+            </div>
+        </div>
     </div>
 
-    <div class="member">
-      <img src="https://i.pravatar.cc/150?img=8">
-      <h3>Alex</h3>
-      <p>Backend Developer</p>
+    <!-- Telegram -->
+    <div class="telegram-section">
+        <h3>🤖 Telegram Бот</h3>
+        <p>Управляйте документами прямо в Telegram!</p>
+        <button class="telegram-btn" onclick="openTelegram()">🚀 Открыть в Telegram</button>
+        <p style="margin-top: 15px; font-size: 14px;">@fillingoutdocuments_bot — ваш личный помощник</p>
     </div>
-
-    <div class="member">
-      <img src="https://i.pravatar.cc/150?img=12">
-      <h3>Kate</h3>
-      <p>UX/UI Designer</p>
-    </div>
-  </div>
-</section>
-
-<section class="contacts">
-  <h2>Контакты</h2>
-  <p>Email: hello@smartdoc.ai</p>
-  <p>Telegram: <a href="https://t.me/">@smartdoc</a></p>
-  <p>Berlin, Germany</p>
-</section>
-
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <h2>Вход</h2>
-    <input id="login-email" type="email" placeholder="Email">
-    <input id="login-password" type="password" placeholder="Пароль">
-    <button onclick="loginUser()">Войти</button>
-  </div>
 </div>
-
-<div class="modal" id="registerModal">
-  <div class="modal-content">
-    <h2>Регистрация</h2>
-    <input type="text" placeholder="Имя">
-    <input id="register-email" type="email" placeholder="Email">
-    <input id="register-password" type="password" placeholder="Пароль">
-    <button onclick="registerUser()">Создать аккаунт</button>
-  </div>
-</div>
-
-<!-- Firebase -->
-<script type="module">
-  // Firebase SDK
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-
-  // ВСТАВЬ СВОИ ДАННЫЕ FIREBASE
-  // Import the functions you need from the SDKs you need
-// Импорты
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyD6Eq52Mo_so2sUlMfL7fd7lxLjrlZ12Wk",
-  authDomain: "project-8fd7f.firebaseapp.com",
-  projectId: "project-8fd7f",
-  storageBucket: "project-8fd7f.firebasestorage.app",
-  messagingSenderId: "517469781021",
-  appId: "1:517469781021:web:62e7ce956d1a87010a9af4",
-  measurementId: "G-LT1NHYP4FH"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-// Регистрация
-window.registerUser = async function () {
-const email = document.getElementById("register-email").value;
-const password = document.getElementById("register-password").value;
-
-if (!email || !password) {
-alert("Заполните email и пароль");
-return;
-}
-
-try {
-await createUserWithEmailAndPassword(auth, email, password);
-alert("Аккаунт создан!");
-closeModal("registerModal");
-} catch (error) {
-alert("Ошибка: " + error.message);
-}
-};
-
-// Вход
-window.loginUser = async function () {
-const email = document.getElementById("login-email").value;
-const password = document.getElementById("login-password").value;
-
-if (!email || !password) {
-alert("Заполните email и пароль");
-return;
-}
-
-try {
-await signInWithEmailAndPassword(auth, email, password);
-alert("Вы вошли!");
-closeModal("loginModal");
-} catch (error) {
-alert("Ошибка: " + error.message);
-}
-};
-</script>
-
-<!-- Stripe -->
-<script src="https://js.stripe.com/v3/"></script>
-
-<script>
-const stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
-
-function buyPro() {
-  alert('Сюда подключается Stripe Checkout');
-}
-</script>
-
-<script>
-function openModal(id) {
-  document.getElementById(id).style.display = 'flex';
-}
-
-function closeModal(id) {
-  document.getElementById(id).style.display = 'none';
-}
-</script>
 
 <footer>
-  © 2026 SmartDoc
+    <div class="phone">📞 8 (909) 689-57-96</div>
+    <p>© 2025 SmartDoc. Все права защищены.</p>
+    <p>📍 г. Москва, ул. Тверская, д. 1</p>
 </footer>
 
+<!-- Модальные окна -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('registerModal')">&times;</span>
+        <h2>Регистрация</h2>
+        <input type="text" id="reg-name" placeholder="Имя">
+        <input type="email" id="reg-email" placeholder="Email">
+        <input type="password" id="reg-password" placeholder="Пароль (мин 6 символов)">
+        <button onclick="registerUser()">Создать аккаунт</button>
+    </div>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Вход</h2>
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Пароль">
+        <button onclick="loginUser()">Войти</button>
+    </div>
+</div>
+
+<script>
+    // Firebase загрузка
+    const firebaseScript = document.createElement('script');
+    firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js';
+    firebaseScript.onload = () => {
+        const authScript = document.createElement('script');
+        authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
+        authScript.onload = () => {
+            const config = {
+                apiKey: "AIzaSyD6Eq52Mo_so2sULMfL7fd7LxLjrlZ12Wk",
+                authDomain: "project-8fd7f.firebaseapp.com",
+                projectId: "project-8fd7f",
+                storageBucket: "project-8fd7f.firebasestorage.app",
+                messagingSenderId: "517469781021",
+                appId: "1:517469781021:web:62e7ce956d1a87010a9af4"
+            };
+            firebase.initializeApp(config);
+            window.auth = firebase.auth();
+            
+            // Проверка авторизации
+            window.auth.onAuthStateChanged((user) => {
+                const nav = document.getElementById('navButtons');
+                if (user) {
+                    nav.innerHTML = `<span style="margin-right:15px">👋 ${user.email}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
+                } else {
+                    nav.innerHTML = `<button class="btn-login" onclick="openModal('loginModal')">Вход</button>
+                                    <button class="btn-register" onclick="openModal('registerModal')">Регистрация</button>`;
+                }
+            });
+        };
+        document.head.appendChild(authScript);
+    };
+    document.head.appendChild(firebaseScript);
+
+    // Функции
+    function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+    }
+
+    window.registerUser = async function() {
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+        
+        if (!email || !password) {
+            alert("Заполните все поля");
+            return;
+        }
+        
+        if (password.length < 6) {
+            alert("Пароль должен быть минимум 6 символов");
+            return;
+        }
+        
+        try {
+            await window.auth.createUserWithEmailAndPassword(email, password);
+            alert("✅ Аккаунт создан!");
+            closeModal('registerModal');
+        } catch (error) {
+            alert("❌ " + error.message);
+        }
+    };
+
+    window.loginUser = async function() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        
+        if (!email || !password) {
+            alert("Заполните email и пароль");
+            return;
+        }
+        
+        try {
+            await window.auth.signInWithEmailAndPassword(email, password);
+            alert("✅ Добро пожаловать!");
+            closeModal('loginModal');
+        } catch (error) {
+            alert("❌ " + error.message);
+        }
+    };
+
+    window.logout = async function() {
+        await window.auth.signOut();
+        alert("Вы вышли из аккаунта");
+    };
+
+    window.buyPlan = function(plan) {
+        if (!window.auth.currentUser) {
+            alert("🔐 Сначала войдите в аккаунт");
+            openModal('loginModal');
+            return;
+        }
+        
+        const prices = {
+            basic: "0 ₽",
+            pro: "499 ₽",
+            business: "999 ₽"
+        };
+        
+        alert(`💳 Вы выбрали тариф "${plan}" за ${prices[plan]}/мес.\n\nОплата через Stripe будет доступна в ближайшее время!`);
+    };
+
+    window.openTelegram = function() {
+        window.open('https://t.me/fillingoutdocuments_bot', '_blank');
+    };
+
+    // Клик вне модалки
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    };
+</script>
 </body>
 </html>
-
-
