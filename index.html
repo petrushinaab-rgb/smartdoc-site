@@ -41,13 +41,15 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #A0D467;
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            color: white;
+        }
+
+        .logo-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -508,7 +510,9 @@
 
 <header>
     <div class="logo">
-        <div class="logo-icon">📄</div>
+        <div class="logo-icon">
+            <img src="logo.png" alt="SmartDoc">
+        </div>
         <div class="logo-text">Smart<span>Doc</span></div>
     </div>
     <div class="nav-buttons" id="navButtons">
@@ -659,7 +663,7 @@
 </div>
 
 <script>
-    // Firebase конфигурация с рабочим API-ключом
+    // Firebase конфигурация (РАБОЧИЙ API-КЛЮЧ, НЕ МЕНЯТЬ)
     const firebaseConfig = {
         apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM",
         authDomain: "project-8fd7f.firebaseapp.com",
@@ -676,13 +680,11 @@
         const authScript = document.createElement('script');
         authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
         authScript.onload = () => {
-            // Инициализация только если ещё не инициализировано
             if (!firebase.apps.length) {
                 firebase.initializeApp(firebaseConfig);
             }
             window.auth = firebase.auth();
             
-            // Отслеживание состояния пользователя
             window.auth.onAuthStateChanged((user) => {
                 const nav = document.getElementById('navButtons');
                 if (user) {
@@ -697,7 +699,6 @@
     };
     document.head.appendChild(firebaseScript);
 
-    // Функции модальных окон
     function openModal(id) {
         document.getElementById(id).style.display = 'flex';
     }
@@ -706,7 +707,6 @@
         document.getElementById(id).style.display = 'none';
     }
 
-    // Регистрация
     window.registerUser = async function() {
         const email = document.getElementById('reg-email').value;
         const password = document.getElementById('reg-password').value;
@@ -725,7 +725,6 @@
             await window.auth.createUserWithEmailAndPassword(email, password);
             alert("Аккаунт успешно создан");
             closeModal('registerModal');
-            // Очищаем поля
             document.getElementById('reg-email').value = '';
             document.getElementById('reg-password').value = '';
             document.getElementById('reg-name').value = '';
@@ -744,7 +743,6 @@
         }
     };
 
-    // Вход
     window.loginUser = async function() {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
@@ -758,7 +756,6 @@
             await window.auth.signInWithEmailAndPassword(email, password);
             alert("Добро пожаловать");
             closeModal('loginModal');
-            // Очищаем поля
             document.getElementById('login-email').value = '';
             document.getElementById('login-password').value = '';
         } catch (err) {
@@ -774,13 +771,11 @@
         }
     };
 
-    // Выход
     window.logout = async function() {
         await window.auth.signOut();
         alert("Вы вышли из аккаунта");
     };
 
-    // Покупка тарифа (заглушка для Stripe)
     window.buyPlan = function(plan) {
         if (!window.auth.currentUser) {
             alert("Сначала войдите в аккаунт");
@@ -797,12 +792,10 @@
         alert(`Тариф "${plan}" за ${prices[plan]}/месяц. Оплата через Stripe будет доступна в ближайшее время.`);
     };
 
-    // Открытие Telegram бота
     window.openTelegram = function() {
         window.open('https://t.me/fillingoutdocuments_bot', '_blank');
     };
 
-    // Закрытие модалки при клике вне окна
     window.onclick = function(e) {
         if (e.target.classList.contains('modal')) {
             e.target.style.display = 'none';
