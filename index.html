@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartDoc — Умный помощник для документов</title>
+    <title>SmartDoc — умный помощник для документов</title>
     <style>
         * {
             margin: 0;
@@ -36,13 +36,18 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            cursor: pointer;
         }
 
-        .logo img {
+        .logo-icon {
             width: 40px;
             height: 40px;
-            object-fit: contain;
+            background: #A0D467;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
         }
 
         .logo-text {
@@ -502,8 +507,8 @@
 <body>
 
 <header>
-    <div class="logo" onclick="location.reload()">
-        <img src="logo.png" alt="SmartDoc Logo" onerror="this.src='https://placehold.co/40x40/A0D467/white?text=SD'">
+    <div class="logo">
+        <div class="logo-icon">📄</div>
         <div class="logo-text">Smart<span>Doc</span></div>
     </div>
     <div class="nav-buttons" id="navButtons">
@@ -654,39 +659,34 @@
 </div>
 
 <script>
-    // ===== ВСТАВЬТЕ СЮДА ВАШ НОВЫЙ API-КЛЮЧ ОТ FIREBASE =====
-    const YOUR_NEW_API_KEY = "ВСТАВЬТЕ_НОВЫЙ_КЛЮЧ_СЮДА";
-    // ========================================================
+    // Firebase конфигурация с рабочим API-ключом
+    const firebaseConfig = {
+        apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM",
+        authDomain: "project-8fd7f.firebaseapp.com",
+        projectId: "project-8fd7f",
+        storageBucket: "project-8fd7f.firebasestorage.app",
+        messagingSenderId: "517469781021",
+        appId: "1:517469781021:web:62e7ce956d1a87010a9af4"
+    };
     
+    // Загрузка Firebase
     const firebaseScript = document.createElement('script');
     firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js';
     firebaseScript.onload = () => {
         const authScript = document.createElement('script');
         authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
         authScript.onload = () => {
-            const config = {
-                apiKey: YOUR_NEW_API_KEY,
-                authDomain: "project-8fd7f.firebaseapp.com",
-                projectId: "project-8fd7f",
-                storageBucket: "project-8fd7f.firebasestorage.app",
-                messagingSenderId: "517469781021",
-                appId: "1:517469781021:web:62e7ce956d1a87010a9af4"
-            };
-            
-            if (YOUR_NEW_API_KEY === "ВСТАВЬТЕ_НОВЫЙ_КЛЮЧ_СЮДА" || YOUR_NEW_API_KEY.length < 20) {
-                console.error("⚠️ Ошибка: API-ключ не настроен");
-                alert("Ошибка: API-ключ не настроен. Замените YOUR_NEW_API_KEY на реальный ключ из Google Cloud Console.");
-                return;
+            // Инициализация только если ещё не инициализировано
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
             }
-            
-            firebase.initializeApp(config);
             window.auth = firebase.auth();
             
+            // Отслеживание состояния пользователя
             window.auth.onAuthStateChanged((user) => {
                 const nav = document.getElementById('navButtons');
                 if (user) {
-                    const userName = user.email ? user.email.split('@')[0] : 'Пользователь';
-                    nav.innerHTML = `<span style="color:#6384C1; margin-right:15px;">${userName}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
+                    nav.innerHTML = `<span style="color:#6384C1; margin-right:15px;">${user.email.split('@')[0]}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
                 } else {
                     nav.innerHTML = `<button class="btn-login" onclick="openModal('loginModal')">Вход</button>
                                     <button class="btn-register" onclick="openModal('registerModal')">Регистрация</button>`;
@@ -697,6 +697,7 @@
     };
     document.head.appendChild(firebaseScript);
 
+    // Функции модальных окон
     function openModal(id) {
         document.getElementById(id).style.display = 'flex';
     }
@@ -705,53 +706,107 @@
         document.getElementById(id).style.display = 'none';
     }
 
+    // Регистрация
     window.registerUser = async function() {
         const email = document.getElementById('reg-email').value;
         const password = document.getElementById('reg-password').value;
-        if (!email || !password) return alert("Заполните все поля");
-        if (password.length < 6) return alert("Пароль должен быть минимум 6 символов");
+        
+        if (!email || !password) {
+            alert("Заполните все поля");
+            return;
+        }
+        
+        if (password.length < 6) {
+            alert("Пароль должен быть минимум 6 символов");
+            return;
+        }
+        
         try {
             await window.auth.createUserWithEmailAndPassword(email, password);
             alert("Аккаунт успешно создан");
             closeModal('registerModal');
+            // Очищаем поля
+            document.getElementById('reg-email').value = '';
+            document.getElementById('reg-password').value = '';
+            document.getElementById('reg-name').value = '';
         } catch (err) {
-            alert("Ошибка: " + err.message);
+            let errorMessage = err.message;
+            if (err.code === 'auth/email-already-in-use') {
+                errorMessage = "Этот email уже зарегистрирован";
+            } else if (err.code === 'auth/invalid-email') {
+                errorMessage = "Некорректный email";
+            } else if (err.code === 'auth/weak-password') {
+                errorMessage = "Пароль слишком слабый";
+            } else if (err.code === 'auth/operation-not-allowed') {
+                errorMessage = "Включите Email/Password в Firebase Console";
+            }
+            alert("Ошибка: " + errorMessage);
         }
     };
 
+    // Вход
     window.loginUser = async function() {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
-        if (!email || !password) return alert("Заполните email и пароль");
+        
+        if (!email || !password) {
+            alert("Заполните email и пароль");
+            return;
+        }
+        
         try {
             await window.auth.signInWithEmailAndPassword(email, password);
             alert("Добро пожаловать");
             closeModal('loginModal');
+            // Очищаем поля
+            document.getElementById('login-email').value = '';
+            document.getElementById('login-password').value = '';
         } catch (err) {
-            alert("Ошибка: " + err.message);
+            let errorMessage = err.message;
+            if (err.code === 'auth/user-not-found') {
+                errorMessage = "Пользователь не найден";
+            } else if (err.code === 'auth/wrong-password') {
+                errorMessage = "Неверный пароль";
+            } else if (err.code === 'auth/invalid-email') {
+                errorMessage = "Некорректный email";
+            }
+            alert("Ошибка: " + errorMessage);
         }
     };
 
+    // Выход
     window.logout = async function() {
         await window.auth.signOut();
         alert("Вы вышли из аккаунта");
     };
 
+    // Покупка тарифа (заглушка для Stripe)
     window.buyPlan = function(plan) {
         if (!window.auth.currentUser) {
             alert("Сначала войдите в аккаунт");
             openModal('loginModal');
             return;
         }
-        alert("Тариф \"" + plan + "\". Оплата через Stripe будет доступна в ближайшее время.");
+        
+        const prices = {
+            basic: "0 ₽",
+            pro: "499 ₽",
+            business: "999 ₽"
+        };
+        
+        alert(`Тариф "${plan}" за ${prices[plan]}/месяц. Оплата через Stripe будет доступна в ближайшее время.`);
     };
 
+    // Открытие Telegram бота
     window.openTelegram = function() {
         window.open('https://t.me/fillingoutdocuments_bot', '_blank');
     };
 
+    // Закрытие модалки при клике вне окна
     window.onclick = function(e) {
-        if (e.target.classList.contains('modal')) e.target.style.display = 'none';
+        if (e.target.classList.contains('modal')) {
+            e.target.style.display = 'none';
+        }
     };
 </script>
 </body>
