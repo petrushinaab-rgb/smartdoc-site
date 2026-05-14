@@ -372,24 +372,27 @@
   // ВСТАВЬ СВОИ ДАННЫЕ FIREBASE
   // Import the functions you need from the SDKs you need
 // Импорты
-import { initializeApp } from "https://www.gstatic.com/firebase/9.22.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebase/9.22.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebase/9.22.0/firebase-auth.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-apiKey: "AIzaSyD03a0iEhaKxcOpIQ7hIUlcgawpPKtk8cT",
-authDomain: "smartdoc-76765.firebaseapp.com",
-projectId: "smartdoc-76765",
-storageBucket: "smartdoc-76765.firebase.storage.app",
-messagingSenderId: "435891400565",
-appId: "1:435891400565:web:10ea4087d5821d3dfed3c",
-measurementId: "G-JZH2LDHJTQ"
+  apiKey: "AIzaSyD6Eq52Mo_so2sUlMfL7fd7lxLjrlZ12Wk",
+  authDomain: "project-8fd7f.firebaseapp.com",
+  projectId: "project-8fd7f",
+  storageBucket: "project-8fd7f.firebasestorage.app",
+  messagingSenderId: "517469781021",
+  appId: "1:517469781021:web:62e7ce956d1a87010a9af4",
+  measurementId: "G-LT1NHYP4FH"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const auth = getAuth(app);
-
 // Регистрация
 window.registerUser = async function () {
 const email = document.getElementById("register-email").value;
