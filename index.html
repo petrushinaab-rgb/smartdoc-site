@@ -9,7 +9,7 @@
         body { font-family: 'Inter', sans-serif; background-color: #F5F7FA; color: #194371; line-height: 1.5; }
         header { background: white; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; box-shadow: 0 2px 12px rgba(25,67,113,0.08); position: sticky; top: 0; z-index: 100; }
         .logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-        .logo-icon img { width: 40px; height: 40px; }
+        .logo-icon img { width: 40px; height: 40px; object-fit: contain; }
         .logo-text { font-size: 24px; font-weight: 700; color: #194371; }
         .logo-text span { color: #A0D467; }
         .nav-buttons { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
@@ -23,9 +23,9 @@
         .hero { background: white; border-radius: 32px; padding: 60px 48px; margin-bottom: 48px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
         .hero h1 { font-size: 48px; color: #194371; }
         .hero .highlight { color: #A0D467; }
-        .hero p { font-size: 18px; color: #6384C1; margin-bottom: 32px; }
+        .hero p { font-size: 18px; color: #6384C1; margin-bottom: 32px; max-width: 600px; }
         .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .btn-primary { background: #A0D467; color: #194371; border: none; padding: 14px 32px; border-radius: 40px; cursor: pointer; font-weight: 600; }
+        .btn-primary { background: #A0D467; color: #194371; border: none; padding: 14px 32px; border-radius: 40px; cursor: pointer; font-weight: 600; transition: 0.2s; }
         .btn-primary:hover { transform: translateY(-2px); background: #8bc34a; }
         .btn-secondary { background: transparent; color: #6384C1; border: 1px solid #6384C1; padding: 14px 32px; border-radius: 40px; cursor: pointer; }
         .how-it-works, .team-section, .pricing, .about-section, .profile-section { background: white; border-radius: 32px; padding: 48px; margin-bottom: 48px; }
@@ -46,10 +46,10 @@
         .price span { font-size: 14px; color: #6384C1; }
         .features { list-style: none; margin: 24px 0; }
         .features li { padding: 8px 0; color: #6384C1; }
-        .btn-plan { background: #6384C1; color: white; border: none; padding: 12px 32px; border-radius: 40px; cursor: pointer; font-weight: 500; }
+        .btn-plan { background: #6384C1; color: white; border: none; padding: 12px 32px; border-radius: 40px; cursor: pointer; font-weight: 500; transition: 0.2s; }
         .btn-plan:hover { background: #194371; }
         .telegram-section { background: linear-gradient(135deg, #194371, #6384C1); border-radius: 32px; padding: 48px; text-align: center; color: white; margin-bottom: 48px; }
-        .telegram-btn { background: white; color: #194371; border: none; padding: 14px 40px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; }
+        .telegram-btn { background: white; color: #194371; border: none; padding: 14px 40px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; transition: 0.2s; }
         .telegram-btn:hover { transform: scale(1.02); background: #A0D467; color: #194371; }
         footer { background: #194371; color: white; text-align: center; padding: 40px 24px; }
         .phone { font-size: 22px; margin: 12px 0; font-weight: 600; }
@@ -58,12 +58,13 @@
         .nav-links a:hover { text-decoration: underline; }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(25,67,113,0.5); justify-content: center; align-items: center; z-index: 1000; }
         .modal-content { background: white; padding: 40px; border-radius: 32px; width: 90%; max-width: 400px; position: relative; }
-        .modal-content input { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #e0e0e0; border-radius: 16px; }
-        .modal-content button { width: 100%; padding: 14px; background: #6384C1; color: white; border: none; border-radius: 40px; cursor: pointer; margin-top: 16px; }
+        .modal-content input { width: 100%; padding: 14px; margin: 10px 0; border: 1px solid #e0e0e0; border-radius: 16px; font-size: 14px; }
+        .modal-content button { width: 100%; padding: 14px; background: #6384C1; color: white; border: none; border-radius: 40px; cursor: pointer; font-size: 16px; font-weight: 500; margin-top: 16px; }
         .close { position: absolute; top: 20px; right: 24px; font-size: 28px; cursor: pointer; color: #6384C1; }
         .subscription-card { background: #F5F7FA; border-radius: 24px; padding: 24px; margin-top: 20px; text-align: center; }
-        .btn-pdf { background: #A0D467; color: #194371; border: none; padding: 12px 24px; border-radius: 40px; cursor: pointer; margin-top: 20px; font-weight: 600; }
-        @media (max-width: 768px) { .hero { padding: 32px 24px; } .hero h1 { font-size: 32px; } .how-it-works, .team-section, .pricing { padding: 32px 24px; } header { padding: 16px 20px; } }
+        .btn-pdf { background: #A0D467; color: #194371; border: none; padding: 12px 24px; border-radius: 40px; cursor: pointer; margin-top: 20px; font-weight: 600; transition: 0.2s; }
+        .btn-pdf:hover { transform: translateY(-2px); }
+        @media (max-width: 768px) { .hero { padding: 32px 24px; } .hero h1 { font-size: 32px; } .how-it-works, .team-section, .pricing, .about-section, .profile-section { padding: 32px 24px; } header { padding: 16px 20px; } }
     </style>
 </head>
 <body>
@@ -111,7 +112,7 @@
         </div>
     </div>
 
-    <div class="pricing">
+    <div class="pricing" id="pricing">
         <h2>Выберите тариф</h2>
         <div class="pricing-grid">
             <div class="plan"><h3>Базовый</h3><div class="price">0 ₽<span>/мес</span></div><ul class="features"><li>5 документов в месяц</li><li>Базовая поддержка</li><li>Шифрование данных</li></ul><button class="btn-plan" onclick="buyPlan('basic')">Бесплатно</button></div>
@@ -156,9 +157,7 @@
 <div class="container">
     <div class="profile-section">
         <h2>Личный кабинет</h2>
-        <div id="profileContent" style="max-width:600px; margin:0 auto;">
-            <!-- Контент загружается через JS -->
-        </div>
+        <div id="profileContent" style="max-width:600px; margin:0 auto;"></div>
     </div>
 </div>
 </div>
@@ -192,7 +191,14 @@
 
 <script>
     // Firebase конфигурация (РАБОЧИЙ API-КЛЮЧ)
-    const firebaseConfig = { apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM", authDomain: "project-8fd7f.firebaseapp.com", projectId: "project-8fd7f", storageBucket: "project-8fd7f.firebasestorage.app", messagingSenderId: "517469781021", appId: "1:517469781021:web:62e7ce956d1a87010a9af4" };
+    const firebaseConfig = { 
+        apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM", 
+        authDomain: "project-8fd7f.firebaseapp.com", 
+        projectId: "project-8fd7f", 
+        storageBucket: "project-8fd7f.firebasestorage.app", 
+        messagingSenderId: "517469781021", 
+        appId: "1:517469781021:web:62e7ce956d1a87010a9af4" 
+    };
     
     // Загрузка Firebase
     const firebaseScript = document.createElement('script');
@@ -208,6 +214,10 @@
                 if (user && document.getElementById('profilePage').style.display !== 'none') {
                     loadProfilePage();
                 }
+                // При входе сохраняем пользователя в аналитику
+                if (user) {
+                    saveUserToAnalytics(user.uid, user.email);
+                }
             });
         };
         document.head.appendChild(authScript);
@@ -216,9 +226,9 @@
 
     // ========== АНАЛИТИКА / АДМИН-ПАНЕЛЬ ==========
     
-    // Функция для сохранения данных пользователя при регистрации
+    // Сохранение пользователя в аналитику
     function saveUserToAnalytics(userId, email, plan = 'basic', expireDate = null) {
-        const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
+        let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         if (!users[userId]) {
             users[userId] = {
                 email: email,
@@ -231,13 +241,14 @@
                 },
                 payments: []
             };
+            localStorage.setItem('analytics_users', JSON.stringify(users));
+            console.log(`📊 Пользователь добавлен в аналитику: ${email}`);
         }
-        localStorage.setItem('analytics_users', JSON.stringify(users));
     }
 
-    // Функция для обновления подписки в аналитике
+    // Обновление подписки в аналитике
     function updateUserSubscriptionInAnalytics(userId, plan) {
-        const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
+        let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         if (users[userId]) {
             users[userId].subscription = {
                 plan: plan,
@@ -255,14 +266,61 @@
         }
     }
 
+    // Добавление тестовых пользователей для демонстрации
+    function addDemoUsers() {
+        let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
+        let payments = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+        
+        const demoUsers = [
+            { email: "ivan.petrov@example.com", uid: "demo_uid_1", plan: "pro" },
+            { email: "maria.sidorova@example.com", uid: "demo_uid_2", plan: "business" },
+            { email: "alexey.smirnov@example.com", uid: "demo_uid_3", plan: "pro" },
+            { email: "elena.kozlova@example.com", uid: "demo_uid_4", plan: "basic" },
+            { email: "dmitry.ivanov@example.com", uid: "demo_uid_5", plan: "pro" },
+            { email: "olga.petrova@example.com", uid: "demo_uid_6", plan: "basic" },
+            { email: "sergey.volkov@example.com", uid: "demo_uid_7", plan: "business" }
+        ];
+        
+        let added = 0;
+        demoUsers.forEach(u => {
+            if (!users[u.uid]) {
+                users[u.uid] = {
+                    email: u.email,
+                    registeredAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+                    subscription: {
+                        plan: u.plan,
+                        status: 'active',
+                        startDate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+                        expireDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+                    },
+                    payments: [{ plan: u.plan, amount: u.plan === 'pro' ? 499 : (u.plan === 'business' ? 999 : 0), date: new Date().toISOString(), status: 'success' }]
+                };
+                added++;
+            }
+        });
+        
+        if (payments.length === 0) {
+            payments = [
+                { plan: "pro", price: "499 ₽", date: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString() },
+                { plan: "business", price: "999 ₽", date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
+                { plan: "pro", price: "499 ₽", date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() }
+            ];
+            localStorage.setItem('paymentHistory', JSON.stringify(payments));
+        }
+        
+        localStorage.setItem('analytics_users', JSON.stringify(users));
+        if (added > 0) console.log(`📊 Добавлено ${added} демо-пользователей в аналитику`);
+    }
+
     // Админ-панель
     window.showAdminPanel = function() {
         const password = prompt("Введите пароль администратора:");
         if (password === "admin123") {
+            // Добавляем демо-пользователей
+            addDemoUsers();
+            
             const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
             const subscriptions = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
-            
-            let usersHtml = '<h2>📊 Аналитика SmartDoc</h2>';
             
             const totalUsers = Object.keys(users).length;
             const proUsers = Object.values(users).filter(u => u.subscription?.plan === 'pro').length;
@@ -273,7 +331,7 @@
                 return sum;
             }, 0);
             
-            usersHtml += `
+            let html = `
                 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:30px;">
                     <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
                         <h3 style="font-size:32px;">${totalUsers}</h3>
@@ -292,54 +350,57 @@
                         <p>Всего транзакций</p>
                     </div>
                 </div>
+                <h3>👥 Список пользователей</h3>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr style="background:#194371; color:white;">
+                        <th style="padding:12px; text-align:left;">Email</th>
+                        <th style="padding:12px; text-align:left;">Тариф</th>
+                        <th style="padding:12px; text-align:left;">Дата регистрации</th>
+                        <th style="padding:12px; text-align:left;">Подписка до</th>
+                    </tr>
             `;
-            
-            usersHtml += '<h3>👥 Список пользователей</h3><table style="width:100%; border-collapse:collapse;">';
-            usersHtml += `<tr style="background:#194371; color:white;">
-                            <th style="padding:12px; text-align:left;">Email</th>
-                            <th style="padding:12px; text-align:left;">Тариф</th>
-                            <th style="padding:12px; text-align:left;">Дата регистрации</th>
-                            <th style="padding:12px; text-align:left;">Подписка до</th>
-                          </tr>`;
             
             Object.values(users).forEach(user => {
                 const expireDate = user.subscription?.expireDate ? new Date(user.subscription.expireDate).toLocaleDateString() : '—';
-                usersHtml += `<tr style="border-bottom:1px solid #e0e0e0;">
-                                <td style="padding:12px;">${user.email}</td>
-                                <td style="padding:12px;"><span style="background:${user.subscription?.plan === 'pro' ? '#A0D467' : (user.subscription?.plan === 'business' ? '#6384C1' : '#F5F7FA')}; padding:4px 12px; border-radius:20px;">${user.subscription?.plan || 'basic'}</span></td>
-                                <td style="padding:12px;">${new Date(user.registeredAt).toLocaleDateString()}</td>
-                                <td style="padding:12px;">${expireDate}</td>
-                               </tr>`;
+                let planColor = '#F5F7FA';
+                if (user.subscription?.plan === 'pro') planColor = '#A0D467';
+                if (user.subscription?.plan === 'business') planColor = '#6384C1';
+                html += `<tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:12px;">${user.email}</td>
+                            <td style="padding:12px;"><span style="background:${planColor}; padding:4px 12px; border-radius:20px;">${user.subscription?.plan || 'basic'}</span></td>
+                            <td style="padding:12px;">${new Date(user.registeredAt).toLocaleDateString()}</td>
+                            <td style="padding:12px;">${expireDate}</td>
+                         </tr>`;
             });
-            usersHtml += '</table>';
             
-            usersHtml += '<h3 style="margin-top:30px;">💰 История платежей</h3><table style="width:100%; border-collapse:collapse;">';
-            usersHtml += `<tr style="background:#194371; color:white;">
-                            <th style="padding:12px; text-align:left;">Дата</th>
-                            <th style="padding:12px; text-align:left;">Тариф</th>
-                            <th style="padding:12px; text-align:left;">Сумма</th>
-                            <th style="padding:12px; text-align:left;">Статус</th>
-                           </tr>`;
+            html += `</table>
+                <h3 style="margin-top:30px;">💰 История платежей</h3>
+                <table style="width:100%; border-collapse:collapse;">
+                    <tr style="background:#194371; color:white;">
+                        <th style="padding:12px; text-align:left;">Дата</th>
+                        <th style="padding:12px; text-align:left;">Тариф</th>
+                        <th style="padding:12px; text-align:left;">Сумма</th>
+                        <th style="padding:12px; text-align:left;">Статус</th>
+                    </tr>`;
             
             subscriptions.forEach(sub => {
-                usersHtml += `<tr style="border-bottom:1px solid #e0e0e0;">
-                                <td style="padding:12px;">${new Date(sub.date).toLocaleDateString()}</td>
-                                <td style="padding:12px;">${sub.plan}</td>
-                                <td style="padding:12px;">${sub.price}</td>
-                                <td style="padding:12px;"><span style="color:#A0D467;">✅ Успешно</span></td>
-                               </tr>`;
+                html += `<tr style="border-bottom:1px solid #e0e0e0;">
+                            <td style="padding:12px;">${new Date(sub.date).toLocaleDateString()}</td>
+                            <td style="padding:12px;">${sub.plan}</td>
+                            <td style="padding:12px;">${sub.price}</td>
+                            <td style="padding:12px;"><span style="color:#A0D467;">✅ Успешно</span></td>
+                         </tr>`;
             });
-            usersHtml += '</table>';
             
-            usersHtml += `<button class="btn-primary" onclick="exportAnalyticsData()" style="margin-top:30px;">📥 Экспорт данных (CSV)</button>
-                          <button class="btn-secondary" onclick="closeAdminPanel()" style="margin-top:30px; margin-left:15px;">Закрыть</button>`;
+            html += `</table>
+                <button class="btn-primary" onclick="exportAnalyticsData()" style="margin-top:30px;">📥 Экспорт данных (CSV)</button>
+                <button class="btn-secondary" onclick="closeAdminPanel()" style="margin-top:30px; margin-left:15px;">Закрыть</button>`;
             
             const modal = document.createElement('div');
             modal.id = 'adminModal';
             modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; overflow-y:auto; padding:40px;';
-            modal.innerHTML = `<div style="background:white; max-width:1200px; margin:0 auto; border-radius:32px; padding:40px;">${usersHtml}</div>`;
+            modal.innerHTML = `<div style="background:white; max-width:1200px; margin:0 auto; border-radius:32px; padding:40px;">${html}</div>`;
             document.body.appendChild(modal);
-            
             modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
         } else if (password !== null) {
             alert("Неверный пароль!");
@@ -358,7 +419,6 @@
             const expireDate = user.subscription?.expireDate ? new Date(user.subscription.expireDate).toLocaleDateString() : '—';
             csv += `"${user.email}",${user.subscription?.plan || 'basic'},${new Date(user.registeredAt).toLocaleDateString()},${expireDate}\n`;
         });
-        
         const blob = new Blob([csv], { type: 'text/csv' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -369,7 +429,8 @@
         alert("CSV-файл скачан!");
     };
 
-    // Функции навигации
+    // ========== ОСНОВНЫЕ ФУНКЦИИ САЙТА ==========
+    
     function showPage(page) {
         document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
         document.getElementById('aboutPage').style.display = page === 'about' ? 'block' : 'none';
@@ -415,7 +476,7 @@
             historyHtml = '<p style="color:#6384C1;">У вас пока нет оформленных подписок</p>';
         }
         
-        const content = `
+        document.getElementById('profileContent').innerHTML = `
             <div class="subscription-card">
                 <h3>Информация об аккаунте</h3>
                 <p><strong>Email:</strong> ${user.email}</p>
@@ -428,7 +489,6 @@
             ${historyHtml}
             <button class="btn-pdf" onclick="generatePDFReport()">📄 Скачать PDF-отчёт о проекте</button>
         `;
-        document.getElementById('profileContent').innerHTML = content;
     }
 
     function openModal(id) { document.getElementById(id).style.display = 'flex'; }
@@ -450,6 +510,7 @@
     window.loginUser = async function() {
         const email = document.getElementById('login-email').value;
         const password = document.getElementById('login-password').value;
+        if (!email || !password) return alert("Заполните email и пароль");
         try {
             await window.auth.signInWithEmailAndPassword(email, password);
             alert("Добро пожаловать");
@@ -463,7 +524,6 @@
         showPage('home');
     };
 
-    // Демо-монетизация с сохранением в аналитику
     window.buyPlan = async function(plan) {
         if (!window.auth.currentUser) {
             alert("Сначала войдите в аккаунт");
@@ -502,35 +562,32 @@
         }
     };
 
-    // Генерация PDF-отчёта
     window.generatePDFReport = function() {
-        const reportContent = `
-            SmartDoc — Отчёт о проекте
-            ========================================
-            
-            Название проекта: SmartDoc
-            Описание: Сервис-помощник для создания документов по шаблонам
-            
-            Технологии: Firebase Auth, HTML5, CSS3, JavaScript, Telegram API, Vercel
-            
-            Функционал:
-            - Регистрация и авторизация пользователей
-            - Система тарифов (Базовый / Про / Бизнес)
-            - Демо-монетизация с имитацией оплаты
-            - Интеграция с Telegram ботом @fillingoutdocuments_bot
-            - Личный кабинет с историей подписок
-            - Адаптивный дизайн
-            - Админ-панель с аналитикой (пароль: admin123)
-            
-            Команда:
-            - Настя: Разработчик сайта и дизайнер
-            - Варя: Аналитик и разработчик
-            - Даня: Разработчик
-            - Насиб: Tech Lead
-            - Адэль: Product Manager
-            
-            Дата отчёта: ${new Date().toLocaleString()}
-        `;
+        const reportContent = `SmartDoc — Отчёт о проекте
+========================================
+
+Название проекта: SmartDoc
+Описание: Сервис-помощник для создания документов по шаблонам
+
+Технологии: Firebase Auth, HTML5, CSS3, JavaScript, Telegram API, Vercel
+
+Функционал:
+- Регистрация и авторизация пользователей
+- Система тарифов (Базовый / Про / Бизнес)
+- Демо-монетизация с имитацией оплаты
+- Интеграция с Telegram ботом @fillingoutdocuments_bot
+- Личный кабинет с историей подписок
+- Адаптивный дизайн
+- Админ-панель с аналитикой (пароль: admin123)
+
+Команда:
+- Настя: Разработчик сайта и дизайнер
+- Варя: Аналитик и разработчик
+- Даня: Разработчик
+- Насиб: Tech Lead
+- Адэль: Product Manager
+
+Дата отчёта: ${new Date().toLocaleString()}`;
         
         const blob = new Blob([reportContent], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
