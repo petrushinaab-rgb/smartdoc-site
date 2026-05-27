@@ -85,7 +85,7 @@
 <div class="container">
     <div class="hero">
         <h1>Документы за <span class="highlight">30 секунд</span></h1>
-        <p>Загрузите шаблон, заполните несколько полей — система сама соберёт готовый файл. Договоры, письма, коммерческие предложения без лишней рутины.</p>
+        <p>Загрузите шаблон, заполните несколько полей — система сама соберёт готовый файл.</p>
         <div class="hero-buttons">
             <button class="btn-primary" onclick="openModal('registerModal')">Начать бесплатно</button>
             <button class="btn-secondary" onclick="openTelegram()">Попробовать в Telegram</button>
@@ -140,15 +140,15 @@
     <div class="pricing" id="pricing">
         <h2>Выберите тариф</h2>
         <div class="pricing-grid">
-            <div class="plan"><h3>Базовый</h3><div class="price">0 ₽<span>/мес</span></div><ul class="features"><li>5 документов в месяц</li><li>Базовая поддержка</li><li>Шифрование данных</li></ul><button class="btn-plan" onclick="buyPlan('basic')">Бесплатно</button></div>
-            <div class="plan popular"><div class="popular-badge">Популярный</div><h3>Про</h3><div class="price">499 ₽<span>/мес</span></div><ul class="features"><li>Безлимит документов</li><li>Приоритетная поддержка 24/7</li><li>Совместная работа</li></ul><button class="btn-plan" onclick="buyPlan('pro')">Купить</button></div>
-            <div class="plan"><h3>Бизнес</h3><div class="price">999 ₽<span>/мес</span></div><ul class="features"><li>Все из Про + API доступ</li><li>До 50 пользователей</li><li>White-label</li></ul><button class="btn-plan" onclick="buyPlan('business')">Купить</button></div>
+            <div class="plan"><h3>Базовый</h3><div class="price">0 ₽<span>/мес</span></div><ul class="features"><li>5 документов в месяц</li><li>Базовая поддержка</li></ul><button class="btn-plan" onclick="buyPlan('basic')">Бесплатно</button></div>
+            <div class="plan popular"><div class="popular-badge">Популярный</div><h3>Про</h3><div class="price">499 ₽<span>/мес</span></div><ul class="features"><li>Безлимит документов</li><li>Приоритетная поддержка</li></ul><button class="btn-plan" onclick="buyPlan('pro')">Купить</button></div>
+            <div class="plan"><h3>Бизнес</h3><div class="price">999 ₽<span>/мес</span></div><ul class="features"><li>Всё из Про + API</li><li>White-label</li></ul><button class="btn-plan" onclick="buyPlan('business')">Купить</button></div>
         </div>
     </div>
 
     <div class="telegram-section">
         <h3>Telegram Бот</h3>
-        <p>Управляйте документами прямо в Telegram — загружайте шаблоны и создавайте файлы</p>
+        <p>Управляйте документами прямо в Telegram</p>
         <button class="telegram-btn" onclick="openTelegram()">Открыть в Telegram</button>
         <p style="margin-top: 16px;">@fillingoutdocuments_bot</p>
     </div>
@@ -160,17 +160,8 @@
     <div class="about-section">
         <h2>О проекте SmartDoc</h2>
         <div style="text-align:center; max-width:800px; margin:0 auto;">
-            <p style="font-size:18px; margin-bottom:20px; color:#6384C1;">SmartDoc — это сервис-помощник для документов. Человек загружает заготовку (договор, письмо или коммерческое предложение), заполняет несколько полей, а система сама собирает готовый файл.</p>
-            <p style="margin-bottom:20px;">Идея простая: не перепечатывать одно и то же вручную каждый раз. Снаружи это работает как Telegram-бот и сайт. Внутри есть хранение шаблонов, повторное использование данных, работа для команды и платные возможности.</p>
-            <h3 style="color:#194371; margin:30px 0 20px;">Технологии проекта</h3>
-            <div style="display:flex; flex-wrap:wrap; gap:15px; justify-content:center;">
-                <span style="background:#F5F7FA; padding:8px 20px; border-radius:40px;">Firebase Auth</span>
-                <span style="background:#F5F7FA; padding:8px 20px; border-radius:40px;">HTML5 / CSS3</span>
-                <span style="background:#F5F7FA; padding:8px 20px; border-radius:40px;">JavaScript</span>
-                <span style="background:#F5F7FA; padding:8px 20px; border-radius:40px;">Telegram API</span>
-                <span style="background:#F5F7FA; padding:8px 20px; border-radius:40px;">Vercel</span>
-            </div>
-            <button class="btn-pdf" onclick="generatePDFReport()">📄 Скачать PDF-отчёт о проекте</button>
+            <p style="font-size:18px; margin-bottom:20px; color:#6384C1;">SmartDoc — сервис-помощник для документов. Загрузите шаблон, заполните поля — система соберёт готовый файл.</p>
+            <button class="btn-pdf" onclick="generatePDFReport()">📄 Скачать PDF-отчёт</button>
         </div>
     </div>
 </div>
@@ -189,9 +180,8 @@
 <div class="container">
     <div class="hero" style="text-align:center;">
         <h1>✅ Оплата успешно проведена!</h1>
-        <p style="font-size:18px; margin:20px 0;">Ваш тариф активирован. Спасибо, что выбрали SmartDoc!</p>
-        <button class="btn-primary" onclick="showPage('profile')">Перейти в личный кабинет</button>
-        <button class="btn-secondary" style="margin-left:15px;" onclick="showPage('home')">На главную</button>
+        <button class="btn-primary" onclick="showPage('profile')">Личный кабинет</button>
+        <button class="btn-secondary" onclick="showPage('home')">На главную</button>
     </div>
 </div>
 </div>
@@ -199,7 +189,7 @@
 <footer>
     <div class="phone">8 (909) 689-57-96</div>
     <p>Москва</p>
-    <div class="footer-links">2025 SmartDoc — помощник для документов</div>
+    <div class="footer-links">2025 SmartDoc</div>
     <div class="nav-links">
         <a onclick="showPage('home')">Главная</a>
         <a onclick="showPage('about')">О проекте</a>
@@ -211,7 +201,7 @@
 <div id="loginModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('loginModal')">&times;</span><h2>Вход</h2><input type="email" id="login-email" placeholder="Email"><input type="password" id="login-password" placeholder="Пароль"><button onclick="loginUser()">Войти</button></div></div>
 
 <script>
-    // Firebase конфигурация
+    // Firebase
     const firebaseConfig = { 
         apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM", 
         authDomain: "project-8fd7f.firebaseapp.com", 
@@ -221,16 +211,14 @@
         appId: "1:517469781021:web:62e7ce956d1a87010a9af4" 
     };
     
-    // Загрузка Firebase
-    const firebaseScript = document.createElement('script');
-    firebaseScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js';
-    firebaseScript.onload = () => {
-        const authScript = document.createElement('script');
-        authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
-        authScript.onload = () => {
-            if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-            window.auth = firebase.auth();
-            window.auth.onAuthStateChanged((user) => {
+    let auth = null;
+    
+    function initFirebase() {
+        if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+            auth = firebase.auth();
+            
+            auth.onAuthStateChanged((user) => {
                 updateNavButtons(user);
                 if (user && document.getElementById('profilePage').style.display !== 'none') {
                     loadProfilePage();
@@ -239,227 +227,237 @@
                     saveUserToAnalytics(user.uid, user.email);
                 }
             });
-        };
-        document.head.appendChild(authScript);
-    };
-    document.head.appendChild(firebaseScript);
-
-    // ========== АНАЛИТИКА С 350+ ПОЛЬЗОВАТЕЛЯМИ (регистрация только март-май 2026) ==========
+        }
+    }
     
-    function saveUserToAnalytics(userId, email, plan = 'basic', expireDate = null) {
+    function loadFirebase() {
+        const script = document.createElement('script');
+        script.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js';
+        script.onload = () => {
+            const authScript = document.createElement('script');
+            authScript.src = 'https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js';
+            authScript.onload = initFirebase;
+            document.head.appendChild(authScript);
+        };
+        document.head.appendChild(script);
+    }
+    loadFirebase();
+    
+    // Аналитика
+    function saveUserToAnalytics(userId, email, plan = 'basic') {
         let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         if (!users[userId]) {
             users[userId] = {
                 email: email,
                 registeredAt: new Date().toISOString(),
-                subscription: {
-                    plan: plan,
-                    status: 'active',
-                    startDate: new Date().toISOString(),
-                    expireDate: expireDate || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-                },
+                subscription: { plan: plan, status: 'active', startDate: new Date().toISOString(), expireDate: new Date(Date.now() + 30*24*60*60*1000).toISOString() },
                 payments: []
             };
             localStorage.setItem('analytics_users', JSON.stringify(users));
         }
     }
-
-    function updateUserSubscriptionInAnalytics(userId, plan) {
-        let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
-        if (users[userId]) {
-            users[userId].subscription = {
-                plan: plan,
-                status: 'active',
-                startDate: new Date().toISOString(),
-                expireDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
-            };
-            users[userId].payments.push({
-                plan: plan,
-                amount: plan === 'pro' ? 499 : (plan === 'business' ? 999 : 0),
-                date: new Date().toISOString(),
-                status: 'success'
-            });
-            localStorage.setItem('analytics_users', JSON.stringify(users));
-        }
-    }
-
-    // Функция для случайной даты между 1 марта 2026 и 31 мая 2026
+    
     function getRandomDateMarchToMay2026() {
-        const startDate = new Date(2026, 2, 1); // 1 марта 2026
-        const endDate = new Date(2026, 4, 31);   // 31 мая 2026
-        const randomTime = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
-        return new Date(randomTime);
+        const start = new Date(2026, 2, 1);
+        const end = new Date(2026, 4, 31);
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     }
-
-    // Функция для случайной даты платежа (после регистрации, но до сегодня/конца мая 2026)
-    function getRandomPaymentDate(registrationDate) {
-        const endOfMay = new Date(2026, 4, 31);
-        const maxTime = Math.min(endOfMay.getTime(), registrationDate.getTime() + 60 * 24 * 60 * 60 * 1000);
-        if (maxTime <= registrationDate.getTime()) return new Date(registrationDate.getTime() + 86400000);
-        return new Date(registrationDate.getTime() + Math.random() * (maxTime - registrationDate.getTime()));
-    }
-
-    // Генерация 350 демо-пользователей (только март-май 2026)
+    
     function generate350Users() {
         let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         let payments = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
-        
         const plans = ['basic', 'pro', 'business'];
-        const firstNames = ['Иван', 'Мария', 'Алексей', 'Елена', 'Дмитрий', 'Ольга', 'Сергей', 'Анна', 'Владимир', 'Татьяна', 'Михаил', 'Наталья', 'Андрей', 'Юлия', 'Николай', 'Екатерина', 'Павел', 'Светлана', 'Александр', 'Ксения', 'Артём', 'Виктория', 'Максим', 'Анастасия', 'Евгений', 'Полина', 'Денис', 'Ирина', 'Роман', 'Алина'];
-        const domains = ['gmail.com', 'yandex.ru', 'mail.ru', 'inbox.ru', 'list.ru', 'bk.ru', 'rambler.ru'];
+        const names = ['Иван', 'Мария', 'Алексей', 'Елена', 'Дмитрий', 'Ольга', 'Сергей', 'Анна', 'Владимир', 'Татьяна'];
+        const domains = ['gmail.com', 'yandex.ru', 'mail.ru'];
         
-        // Считаем только демо-пользователей (не реальных)
-        let demoCount = Object.keys(users).filter(uid => uid.startsWith('demo_uid_')).length;
+        let demoCount = Object.keys(users).filter(uid => uid.startsWith('demo_')).length;
         
-        // Генерируем до 350 демо-пользователей
         for (let i = demoCount; i < 350; i++) {
-            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const lastName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const name = names[Math.floor(Math.random() * names.length)];
             const domain = domains[Math.floor(Math.random() * domains.length)];
-            const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${Math.floor(Math.random() * 900 + 100)}@${domain}`;
-            const uid = `demo_uid_${i + 1}`;
+            const email = `${name.toLowerCase()}${Math.floor(Math.random() * 900 + 100)}@${domain}`;
+            const uid = `demo_${i + 1}`;
             const plan = plans[Math.floor(Math.random() * plans.length)];
-            
-            // Регистрация ТОЛЬКО в марте-мае 2026
-            const registrationDate = getRandomDateMarchToMay2026();
-            
-            // Дата окончания подписки (30 дней после регистрации)
-            const expireDate = new Date(registrationDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+            const regDate = getRandomDateMarchToMay2026();
+            const expireDate = new Date(regDate.getTime() + 30 * 24 * 60 * 60 * 1000);
             
             if (!users[uid]) {
                 users[uid] = {
                     email: email,
-                    registeredAt: registrationDate.toISOString(),
-                    subscription: {
-                        plan: plan,
-                        status: 'active',
-                        startDate: registrationDate.toISOString(),
-                        expireDate: expireDate.toISOString()
-                    },
-                    payments: plan !== 'basic' ? [{
-                        plan: plan,
-                        amount: plan === 'pro' ? 499 : 999,
-                        date: getRandomPaymentDate(registrationDate).toISOString(),
-                        status: 'success'
-                    }] : []
+                    registeredAt: regDate.toISOString(),
+                    subscription: { plan: plan, status: 'active', startDate: regDate.toISOString(), expireDate: expireDate.toISOString() },
+                    payments: plan !== 'basic' ? [{ plan: plan, amount: plan === 'pro' ? 499 : 999, date: regDate.toISOString(), status: 'success' }] : []
                 };
             }
         }
         
-        // Добавляем историю платежей (только за март-май 2026)
-        if (payments.length < 80) {
-            const paymentPlans = ['pro', 'business'];
-            for (let i = 0; i < 100; i++) {
-                const plan = paymentPlans[Math.floor(Math.random() * paymentPlans.length)];
-                // Случайная дата платежа — март, апрель, май 2026
-                const startPay = new Date(2026, 2, 1);
-                const endPay = new Date(2026, 4, 31);
-                const payDate = new Date(startPay.getTime() + Math.random() * (endPay.getTime() - startPay.getTime()));
-                payments.push({
-                    plan: plan,
-                    price: plan === 'pro' ? "499 ₽" : "999 ₽",
-                    date: payDate.toISOString()
-                });
+        if (payments.length < 50) {
+            for (let i = 0; i < 80; i++) {
+                const plan = plans[Math.floor(Math.random() * plans.length)];
+                if (plan !== 'basic') {
+                    payments.push({ plan: plan, price: plan === 'pro' ? "499 ₽" : "999 ₽", date: getRandomDateMarchToMay2026().toISOString() });
+                }
             }
-            // Сортируем по дате
-            payments.sort((a, b) => new Date(a.date) - new Date(b.date));
             localStorage.setItem('paymentHistory', JSON.stringify(payments));
         }
         
         localStorage.setItem('analytics_users', JSON.stringify(users));
-        console.log(`📊 Сгенерировано ${Object.keys(users).length} пользователей в аналитике (регистрация с марта по май 2026)`);
         return Object.keys(users).length;
     }
-
+    
     window.showAdminPanel = function() {
         const password = prompt("Введите пароль администратора:");
         if (password === "admin123") {
-            const totalUsers = generate350Users();
+            const total = generate350Users();
             const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
-            const subscriptions = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
+            const payments = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
             
-            const proUsers = Object.values(users).filter(u => u.subscription?.plan === 'pro').length;
-            const businessUsers = Object.values(users).filter(u => u.subscription?.plan === 'business').length;
-            const totalRevenue = subscriptions.reduce((sum, s) => {
-                if (s.plan === 'pro') return sum + 499;
-                if (s.plan === 'business') return sum + 999;
-                return sum;
-            }, 0);
+            const proCount = Object.values(users).filter(u => u.subscription?.plan === 'pro').length;
+            const businessCount = Object.values(users).filter(u => u.subscription?.plan === 'business').length;
+            const revenue = payments.reduce((s, p) => s + (p.plan === 'pro' ? 499 : 999), 0);
             
-            // Подсчёт регистраций по месяцам 2026
-            let marchCount = 0, aprilCount = 0, mayCount = 0;
-            Object.values(users).forEach(user => {
-                const date = new Date(user.registeredAt);
-                const month = date.getMonth();
-                if (month === 2) marchCount++;
-                else if (month === 3) aprilCount++;
-                else if (month === 4) mayCount++;
+            let march=0, april=0, may=0;
+            Object.values(users).forEach(u => {
+                const m = new Date(u.registeredAt).getMonth();
+                if (m === 2) march++;
+                else if (m === 3) april++;
+                else if (m === 4) may++;
             });
             
-            let html = `
-                <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:30px;">
-                    <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:32px;">${totalUsers}</h3>
-                        <p>Всего пользователей</p>
-                    </div>
-                    <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:32px;">${proUsers + businessUsers}</h3>
-                        <p>Платных подписок</p>
-                    </div>
-                    <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:32px;">${totalRevenue.toLocaleString()} ₽</h3>
-                        <p>Выручка</p>
-                    </div>
-                    <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:32px;">${subscriptions.length}</h3>
-                        <p>Всего транзакций</p>
-                    </div>
-                </div>
-                <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:30px;">
-                    <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:24px;">📅 ${marchCount}</h3>
-                        <p>Март 2026</p>
-                    </div>
-                    <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:24px;">📅 ${aprilCount}</h3>
-                        <p>Апрель 2026</p>
-                    </div>
-                    <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:24px;">📅 ${mayCount}</h3>
-                        <p>Май 2026</p>
-                    </div>
-                </div>
-                <h3>👥 Список пользователей (показаны первые 50)</h3>
-                <div style="max-height:400px; overflow-y:auto;">
-                <table style="width:100%; border-collapse:collapse;">
-                    <tr style="background:#194371; color:white;">
-                        <th style="padding:12px; text-align:left;">Email</th>
-                        <th style="padding:12px; text-align:left;">Тариф</th>
-                        <th style="padding:12px; text-align:left;">Дата регистрации</th>
-                        <th style="padding:12px; text-align:left;">Подписка до</th>
-                    </tr>
-            `;
+            let html = `<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:30px;">
+                <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;"><h3 style="font-size:32px;">${total}</h3><p>Всего пользователей</p></div>
+                <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;"><h3 style="font-size:32px;">${proCount + businessCount}</h3><p>Платных подписок</p></div>
+                <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;"><h3 style="font-size:32px;">${revenue.toLocaleString()} ₽</h3><p>Выручка</p></div>
+                <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;"><h3 style="font-size:32px;">${payments.length}</h3><p>Транзакций</p></div>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:30px;">
+                <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;"><h3>${march}</h3><p>Март 2026</p></div>
+                <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;"><h3>${april}</h3><p>Апрель 2026</p></div>
+                <div style="background:#194371; color:white; padding:15px; border-radius:16px; text-align:center;"><h3>${may}</h3><p>Май 2026</p></div>
+            </div>
+            <h3>👥 Список пользователей</h3>
+            <div style="max-height:300px; overflow-y:auto;"><table style="width:100%; border-collapse:collapse;">
+                <tr style="background:#194371; color:white;"><th style="padding:12px;">Email</th><th>Тариф</th><th>Дата регистрации</th></tr>`;
             
-            let count = 0;
-            for (let [uid, user] of Object.entries(users)) {
-                if (count++ >= 50) break;
-                const expireDate = user.subscription?.expireDate ? new Date(user.subscription.expireDate).toLocaleDateString() : '—';
-                const regDate = new Date(user.registeredAt).toLocaleDateString();
-                let planColor = '#F5F7FA';
-                if (user.subscription?.plan === 'pro') planColor = '#A0D467';
-                if (user.subscription?.plan === 'business') planColor = '#6384C1';
-                html += `<tr style="border-bottom:1px solid #e0e0e0;">
-                            <td style="padding:12px;">${user.email}</td>
-                            <td style="padding:12px;"><span style="background:${planColor}; padding:4px 12px; border-radius:20px;">${user.subscription?.plan || 'basic'}</span></td>
-                            <td style="padding:12px;">${regDate}</td>
-                            <td style="padding:12px;">${expireDate}</td>
-                          </tr>`;
+            let cnt=0;
+            for (let u of Object.values(users)) {
+                if (cnt++ > 30) break;
+                html += `<tr><td style="padding:8px;">${u.email}</td><td>${u.subscription?.plan || 'basic'}</td><td>${new Date(u.registeredAt).toLocaleDateString()}</td></tr>`;
             }
-            
             html += `</table></div>
-                <h3 style="margin-top:20px;">💰 История платежей (последние 20)</h3>
-                <div style="max-height:300px; overflow-y:auto;">
-                <table style="width:100%; border-collapse:collapse;">
-                    <tr style="background:#194371; color:white;">
-                        <th style="padding:12px; text-align:left;">Дата</th>
-                        <th style="padding:12px; text-align:left;">Та
+                <button class="btn-primary" onclick="exportAnalyticsData()" style="margin-top:20px;">📥 Экспорт CSV</button>
+                <button class="btn-secondary" onclick="closeAdminPanel()" style="margin-top:20px;">Закрыть</button>`;
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; overflow:auto; padding:40px;';
+            modal.innerHTML = `<div style="background:white; max-width:800px; margin:0 auto; border-radius:32px; padding:40px;">${html}</div>`;
+            document.body.appendChild(modal);
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        }
+    };
+    
+    function closeAdminPanel() { document.getElementById('adminModal')?.remove(); }
+    window.exportAnalyticsData = function() {
+        const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
+        let csv = "Email,Тариф,Дата регистрации\n";
+        Object.values(users).forEach(u => csv += `${u.email},${u.subscription?.plan || 'basic'},${new Date(u.registeredAt).toLocaleDateString()}\n`);
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'smartdoc_users.csv';
+        a.click();
+        URL.revokeObjectURL(blob);
+        alert("CSV скачан!");
+    };
+    
+    // Основные функции
+    function showPage(page) {
+        document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
+        document.getElementById('aboutPage').style.display = page === 'about' ? 'block' : 'none';
+        document.getElementById('profilePage').style.display = page === 'profile' ? 'block' : 'none';
+        document.getElementById('successPage').style.display = page === 'success' ? 'block' : 'none';
+        if (page === 'profile' && auth?.currentUser) loadProfilePage();
+    }
+    
+    function showProfileIfLoggedIn() {
+        if (auth?.currentUser) showPage('profile');
+        else { alert("Войдите в аккаунт"); openModal('loginModal'); }
+    }
+    
+    function updateNavButtons(user) {
+        const nav = document.getElementById('navButtons');
+        if (user) {
+            nav.innerHTML = `<span style="color:#6384C1;">${user.email.split('@')[0]}</span><button class="btn-logout" onclick="logout()">Выйти</button>`;
+        } else {
+            nav.innerHTML = `<button class="btn-login" onclick="openModal('loginModal')">Вход</button><button class="btn-register" onclick="openModal('registerModal')">Регистрация</button>`;
+        }
+    }
+    
+    function loadProfilePage() {
+        const user = auth?.currentUser;
+        if (!user) return;
+        const sub = JSON.parse(localStorage.getItem('subscription') || '{}');
+        document.getElementById('profileContent').innerHTML = `
+            <div class="subscription-card">
+                <p><strong>Email:</strong> ${user.email}</p>
+                <h3>Текущий тариф</h3>
+                ${sub.active ? `<p>⭐ ${sub.plan?.toUpperCase()} до ${new Date(sub.expireDate).toLocaleDateString()}</p>` : '<p>Базовый тариф</p>'}
+                <button class="btn-primary" onclick="showPage('home')">Сменить тариф</button>
+                <button class="btn-pdf" onclick="generatePDFReport()">PDF-отчёт</button>
+            </div>`;
+    }
+    
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    
+    window.registerUser = async function() {
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+        if (!email || !password) return alert("Заполните поля");
+        if (password.length < 6) return alert("Пароль минимум 6 символов");
+        try {
+            const res = await auth.createUserWithEmailAndPassword(email, password);
+            saveUserToAnalytics(res.user.uid, email);
+            alert("Аккаунт создан");
+            closeModal('registerModal');
+        } catch (err) { alert("Ошибка: " + err.message); }
+    };
+    
+    window.loginUser = async function() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            alert("Добро пожаловать");
+            closeModal('loginModal');
+        } catch (err) { alert("Ошибка: " + err.message); }
+    };
+    
+    window.logout = async function() { await auth.signOut(); showPage('home'); };
+    
+    window.buyPlan = function(plan) {
+        if (!auth?.currentUser) { alert("Войдите в аккаунт"); openModal('loginModal'); return; }
+        const prices = { basic: "0 ₽", pro: "499 ₽", business: "999 ₽" };
+        if (confirm(`ДЕМО-РЕЖИМ\nТариф: ${plan.toUpperCase()}\nСтоимость: ${prices[plan]}/мес\n\nНажмите ОК для имитации оплаты`)) {
+            const subscription = { plan: plan, startDate: new Date().toISOString(), expireDate: new Date(Date.now() + 30*24*60*60*1000).toISOString(), active: true };
+            localStorage.setItem('subscription', JSON.stringify(subscription));
+            alert(`✅ Тариф "${plan}" активирован до ${new Date(subscription.expireDate).toLocaleDateString()}`);
+            showPage('success');
+        }
+    };
+    
+    window.generatePDFReport = function() {
+        const content = `SmartDoc Отчёт\nДата: ${new Date().toLocaleString()}\nПроект: сервис для создания документов по шаблонам`;
+        const blob = new Blob([content], { type: 'application/pdf' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'SmartDoc_Report.pdf';
+        a.click();
+        URL.revokeObjectURL(blob);
+    };
+    
+    window.openTelegram = function() { window.open('https://t.me/fillingoutdocuments_bot', '_blank'); };
+    window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.style.display = 'none'; };
+</script>
+</body>
+</html>
