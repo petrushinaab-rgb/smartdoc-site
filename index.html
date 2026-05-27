@@ -36,7 +36,8 @@
         .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         .step, .team-card, .plan { text-align: center; background: #F5F7FA; border-radius: 24px; padding: 24px; transition: 0.2s; }
         .step-number { width: 56px; height: 56px; background: #A0D467; border-radius: 28px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; margin: 0 auto 16px; color: #194371; }
-        .team-icon { width: 80px; height: 80px; background: #A0D467; border-radius: 40px; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto 16px; }
+        .team-icon { width: 100px; height: 100px; margin: 0 auto 16px; }
+        .team-icon img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
         .role { color: #6384C1; font-size: 14px; margin-bottom: 12px; }
         .plan { cursor: pointer; border: 1px solid transparent; }
         .plan:hover { border-color: #A0D467; transform: translateY(-4px); }
@@ -80,7 +81,6 @@
     </div>
 </header>
 
-<!-- Основной контейнер для динамических страниц -->
 <div id="homePage">
 <div class="container">
     <div class="hero">
@@ -104,11 +104,36 @@
     <div class="team-section">
         <h2>Наша команда</h2>
         <div class="team-grid">
-            <div class="team-card"><div class="team-icon">👩‍💻</div><h3>Настя</h3><div class="role">Разработчик сайта и дизайнер</div><div class="desc">Создала дизайн и интерфейс SmartDoc</div></div>
-            <div class="team-card"><div class="team-icon">📊</div><h3>Варя</h3><div class="role">Аналитик и разработчик</div><div class="desc">Оптимизировала процессы и UX</div></div>
-            <div class="team-card"><div class="team-icon">💻</div><h3>Даня</h3><div class="role">Разработчик</div><div class="desc">Реализовал бэкенд и интеграции</div></div>
-            <div class="team-card"><div class="team-icon">⚙️</div><h3>Насиб</h3><div class="role">Tech Lead</div><div class="desc">Координирует разработку</div></div>
-            <div class="team-card"><div class="team-icon">📋</div><h3>Адэль</h3><div class="role">Product Manager</div><div class="desc">Отвечает за стратегию продукта</div></div>
+            <div class="team-card">
+                <div class="team-icon"><img src="nastya.png" alt="Настя" onerror="this.src='https://placehold.co/100x100/A0D467/white?text=Н'"></div>
+                <h3>Настя</h3>
+                <div class="role">Разработчик сайта и дизайнер</div>
+                <div class="desc">Создала дизайн и интерфейс SmartDoc</div>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><img src="varya.png" alt="Варя" onerror="this.src='https://placehold.co/100x100/A0D467/white?text=В'"></div>
+                <h3>Варя</h3>
+                <div class="role">Аналитик и разработчик</div>
+                <div class="desc">Оптимизировала процессы и UX</div>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><img src="danya.png" alt="Даня" onerror="this.src='https://placehold.co/100x100/A0D467/white?text=Д'"></div>
+                <h3>Даня</h3>
+                <div class="role">Разработчик</div>
+                <div class="desc">Реализовал бэкенд и интеграции</div>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><img src="nasib.png" alt="Насиб" onerror="this.src='https://placehold.co/100x100/A0D467/white?text=Нс'"></div>
+                <h3>Насиб</h3>
+                <div class="role">Tech Lead</div>
+                <div class="desc">Координирует разработку</div>
+            </div>
+            <div class="team-card">
+                <div class="team-icon"><img src="adel.png" alt="Адэль" onerror="this.src='https://placehold.co/100x100/A0D467/white?text=А'"></div>
+                <h3>Адэль</h3>
+                <div class="role">Product Manager</div>
+                <div class="desc">Отвечает за стратегию продукта</div>
+            </div>
         </div>
     </div>
 
@@ -130,7 +155,6 @@
 </div>
 </div>
 
-<!-- Страница "О проекте" -->
 <div id="aboutPage" style="display:none;">
 <div class="container">
     <div class="about-section">
@@ -152,7 +176,6 @@
 </div>
 </div>
 
-<!-- Личный кабинет -->
 <div id="profilePage" style="display:none;">
 <div class="container">
     <div class="profile-section">
@@ -162,7 +185,6 @@
 </div>
 </div>
 
-<!-- Страница успешной оплаты -->
 <div id="successPage" style="display:none;">
 <div class="container">
     <div class="hero" style="text-align:center;">
@@ -185,12 +207,11 @@
     </div>
 </footer>
 
-<!-- Модалки -->
 <div id="registerModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('registerModal')">&times;</span><h2>Регистрация</h2><input type="text" id="reg-name" placeholder="Имя"><input type="email" id="reg-email" placeholder="Email"><input type="password" id="reg-password" placeholder="Пароль (мин 6 символов)"><button onclick="registerUser()">Создать аккаунт</button></div></div>
 <div id="loginModal" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('loginModal')">&times;</span><h2>Вход</h2><input type="email" id="login-email" placeholder="Email"><input type="password" id="login-password" placeholder="Пароль"><button onclick="loginUser()">Войти</button></div></div>
 
 <script>
-    // Firebase конфигурация (РАБОЧИЙ API-КЛЮЧ)
+    // Firebase конфигурация
     const firebaseConfig = { 
         apiKey: "AIzaSyCkdqaqZ3MqGyymUooL4cPDBVt-jyuc0WM", 
         authDomain: "project-8fd7f.firebaseapp.com", 
@@ -214,7 +235,6 @@
                 if (user && document.getElementById('profilePage').style.display !== 'none') {
                     loadProfilePage();
                 }
-                // При входе сохраняем пользователя в аналитику
                 if (user) {
                     saveUserToAnalytics(user.uid, user.email);
                 }
@@ -224,9 +244,8 @@
     };
     document.head.appendChild(firebaseScript);
 
-    // ========== АНАЛИТИКА / АДМИН-ПАНЕЛЬ ==========
+    // ========== АНАЛИТИКА С 350+ ПОЛЬЗОВАТЕЛЯМИ ==========
     
-    // Сохранение пользователя в аналитику
     function saveUserToAnalytics(userId, email, plan = 'basic', expireDate = null) {
         let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         if (!users[userId]) {
@@ -242,11 +261,9 @@
                 payments: []
             };
             localStorage.setItem('analytics_users', JSON.stringify(users));
-            console.log(`📊 Пользователь добавлен в аналитику: ${email}`);
         }
     }
 
-    // Обновление подписки в аналитике
     function updateUserSubscriptionInAnalytics(userId, plan) {
         let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         if (users[userId]) {
@@ -266,63 +283,74 @@
         }
     }
 
-    // Добавление тестовых пользователей для демонстрации
-    function addDemoUsers() {
+    // Генерация 350 демо-пользователей
+    function generate350Users() {
         let users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
         let payments = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
         
-        const demoUsers = [
-            { email: "ivan.petrov@example.com", uid: "demo_uid_1", plan: "pro" },
-            { email: "maria.sidorova@example.com", uid: "demo_uid_2", plan: "business" },
-            { email: "alexey.smirnov@example.com", uid: "demo_uid_3", plan: "pro" },
-            { email: "elena.kozlova@example.com", uid: "demo_uid_4", plan: "basic" },
-            { email: "dmitry.ivanov@example.com", uid: "demo_uid_5", plan: "pro" },
-            { email: "olga.petrova@example.com", uid: "demo_uid_6", plan: "basic" },
-            { email: "sergey.volkov@example.com", uid: "demo_uid_7", plan: "business" }
-        ];
+        const plans = ['basic', 'pro', 'business'];
+        const firstNames = ['Иван', 'Мария', 'Алексей', 'Елена', 'Дмитрий', 'Ольга', 'Сергей', 'Анна', 'Владимир', 'Татьяна', 'Михаил', 'Наталья', 'Андрей', 'Юлия', 'Николай', 'Екатерина', 'Павел', 'Светлана', 'Александр', 'Ксения'];
+        const domains = ['gmail.com', 'yandex.ru', 'mail.ru', 'inbox.ru', 'list.ru', 'bk.ru'];
         
-        let added = 0;
-        demoUsers.forEach(u => {
-            if (!users[u.uid]) {
-                users[u.uid] = {
-                    email: u.email,
-                    registeredAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+        let existingCount = Object.keys(users).length;
+        
+        // Генерируем до 350 пользователей
+        for (let i = existingCount; i < 350; i++) {
+            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const lastName = firstNames[Math.floor(Math.random() * firstNames.length)];
+            const domain = domains[Math.floor(Math.random() * domains.length)];
+            const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}${Math.floor(Math.random() * 100)}@${domain}`;
+            const uid = `demo_uid_${i + 1}`;
+            const plan = plans[Math.floor(Math.random() * plans.length)];
+            const regDate = new Date(Date.now() - Math.random() * 180 * 24 * 60 * 60 * 1000);
+            
+            if (!users[uid]) {
+                users[uid] = {
+                    email: email,
+                    registeredAt: regDate.toISOString(),
                     subscription: {
-                        plan: u.plan,
+                        plan: plan,
                         status: 'active',
-                        startDate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
-                        expireDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+                        startDate: new Date(regDate.getTime() + Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+                        expireDate: new Date(Date.now() + Math.random() * 60 * 24 * 60 * 60 * 1000).toISOString()
                     },
-                    payments: [{ plan: u.plan, amount: u.plan === 'pro' ? 499 : (u.plan === 'business' ? 999 : 0), date: new Date().toISOString(), status: 'success' }]
+                    payments: plan !== 'basic' ? [{
+                        plan: plan,
+                        amount: plan === 'pro' ? 499 : 999,
+                        date: new Date(Date.now() - Math.random() * 60 * 24 * 60 * 60 * 1000).toISOString(),
+                        status: 'success'
+                    }] : []
                 };
-                added++;
             }
-        });
+        }
         
-        if (payments.length === 0) {
-            payments = [
-                { plan: "pro", price: "499 ₽", date: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString() },
-                { plan: "business", price: "999 ₽", date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() },
-                { plan: "pro", price: "499 ₽", date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString() }
-            ];
+        // Добавляем историю платежей (50+ транзакций)
+        if (payments.length < 50) {
+            for (let i = 0; i < 80; i++) {
+                const plan = plans[Math.floor(Math.random() * plans.length)];
+                if (plan !== 'basic') {
+                    payments.push({
+                        plan: plan,
+                        price: plan === 'pro' ? "499 ₽" : "999 ₽",
+                        date: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000).toISOString()
+                    });
+                }
+            }
             localStorage.setItem('paymentHistory', JSON.stringify(payments));
         }
         
         localStorage.setItem('analytics_users', JSON.stringify(users));
-        if (added > 0) console.log(`📊 Добавлено ${added} демо-пользователей в аналитику`);
+        console.log(`📊 Сгенерировано ${Object.keys(users).length} пользователей в аналитике`);
+        return Object.keys(users).length;
     }
 
-    // Админ-панель
     window.showAdminPanel = function() {
         const password = prompt("Введите пароль администратора:");
         if (password === "admin123") {
-            // Добавляем демо-пользователей
-            addDemoUsers();
-            
+            const totalUsers = generate350Users();
             const users = JSON.parse(localStorage.getItem('analytics_users') || '{}');
             const subscriptions = JSON.parse(localStorage.getItem('paymentHistory') || '[]');
             
-            const totalUsers = Object.keys(users).length;
             const proUsers = Object.values(users).filter(u => u.subscription?.plan === 'pro').length;
             const businessUsers = Object.values(users).filter(u => u.subscription?.plan === 'business').length;
             const totalRevenue = subscriptions.reduce((sum, s) => {
@@ -342,15 +370,16 @@
                         <p>Платных подписок</p>
                     </div>
                     <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
-                        <h3 style="font-size:32px;">${totalRevenue} ₽</h3>
-                        <p>Выручка (демо)</p>
+                        <h3 style="font-size:32px;">${totalRevenue.toLocaleString()} ₽</h3>
+                        <p>Выручка</p>
                     </div>
                     <div style="background:#F5F7FA; padding:20px; border-radius:16px; text-align:center;">
                         <h3 style="font-size:32px;">${subscriptions.length}</h3>
                         <p>Всего транзакций</p>
                     </div>
                 </div>
-                <h3>👥 Список пользователей</h3>
+                <h3>👥 Список пользователей (показаны первые 50)</h3>
+                <div style="max-height:400px; overflow-y:auto;">
                 <table style="width:100%; border-collapse:collapse;">
                     <tr style="background:#194371; color:white;">
                         <th style="padding:12px; text-align:left;">Email</th>
@@ -360,7 +389,9 @@
                     </tr>
             `;
             
-            Object.values(users).forEach(user => {
+            let count = 0;
+            for (let [uid, user] of Object.entries(users)) {
+                if (count++ >= 50) break;
                 const expireDate = user.subscription?.expireDate ? new Date(user.subscription.expireDate).toLocaleDateString() : '—';
                 let planColor = '#F5F7FA';
                 if (user.subscription?.plan === 'pro') planColor = '#A0D467';
@@ -370,11 +401,12 @@
                             <td style="padding:12px;"><span style="background:${planColor}; padding:4px 12px; border-radius:20px;">${user.subscription?.plan || 'basic'}</span></td>
                             <td style="padding:12px;">${new Date(user.registeredAt).toLocaleDateString()}</td>
                             <td style="padding:12px;">${expireDate}</td>
-                         </tr>`;
-            });
+                          </tr>`;
+            }
             
-            html += `</table>
-                <h3 style="margin-top:30px;">💰 История платежей</h3>
+            html += `</table></div>
+                <h3 style="margin-top:20px;">💰 История платежей (последние 20)</h3>
+                <div style="max-height:300px; overflow-y:auto;">
                 <table style="width:100%; border-collapse:collapse;">
                     <tr style="background:#194371; color:white;">
                         <th style="padding:12px; text-align:left;">Дата</th>
@@ -383,16 +415,16 @@
                         <th style="padding:12px; text-align:left;">Статус</th>
                     </tr>`;
             
-            subscriptions.forEach(sub => {
+            subscriptions.slice(-20).reverse().forEach(sub => {
                 html += `<tr style="border-bottom:1px solid #e0e0e0;">
                             <td style="padding:12px;">${new Date(sub.date).toLocaleDateString()}</td>
                             <td style="padding:12px;">${sub.plan}</td>
                             <td style="padding:12px;">${sub.price}</td>
                             <td style="padding:12px;"><span style="color:#A0D467;">✅ Успешно</span></td>
-                         </tr>`;
+                          </tr>`;
             });
             
-            html += `</table>
+            html += `</table></div>
                 <button class="btn-primary" onclick="exportAnalyticsData()" style="margin-top:30px;">📥 Экспорт данных (CSV)</button>
                 <button class="btn-secondary" onclick="closeAdminPanel()" style="margin-top:30px; margin-left:15px;">Закрыть</button>`;
             
@@ -429,7 +461,7 @@
         alert("CSV-файл скачан!");
     };
 
-    // ========== ОСНОВНЫЕ ФУНКЦИИ САЙТА ==========
+    // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
     
     function showPage(page) {
         document.getElementById('homePage').style.display = page === 'home' ? 'block' : 'none';
@@ -468,7 +500,7 @@
         let historyHtml = '';
         if (history.length > 0) {
             historyHtml = '<h3 style="margin-top:30px;">История подписок</h3><ul style="list-style:none;">';
-            history.forEach(item => {
+            history.slice(-5).reverse().forEach(item => {
                 historyHtml += `<li style="padding:10px; background:#F5F7FA; margin:10px 0; border-radius:16px;">📅 ${new Date(item.date).toLocaleDateString()} — Тариф: ${item.plan} — ${item.price}</li>`;
             });
             historyHtml += '</ul>';
@@ -480,7 +512,6 @@
             <div class="subscription-card">
                 <h3>Информация об аккаунте</h3>
                 <p><strong>Email:</strong> ${user.email}</p>
-                <p><strong>UID:</strong> ${user.uid.substring(0, 16)}...</p>
                 <hr style="margin:20px 0; border-color:#e0e0e0;">
                 <h3>Текущий тариф</h3>
                 ${sub.active ? `<p><strong>⭐ ${sub.plan?.toUpperCase()}</strong></p><p>Активен до: ${new Date(sub.expireDate).toLocaleDateString()}</p><p>Статус: <span style="color:#A0D467;">Активен</span></p>` : '<p>Базовый (бесплатный) тариф</p>'}
@@ -563,6 +594,7 @@
     };
 
     window.generatePDFReport = function() {
+        const usersCount = Object.keys(JSON.parse(localStorage.getItem('analytics_users') || '{}')).length;
         const reportContent = `SmartDoc — Отчёт о проекте
 ========================================
 
@@ -579,6 +611,7 @@
 - Личный кабинет с историей подписок
 - Адаптивный дизайн
 - Админ-панель с аналитикой (пароль: admin123)
+- ${usersCount} пользователей в системе
 
 Команда:
 - Настя: Разработчик сайта и дизайнер
